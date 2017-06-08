@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/QueryIT/src" modelPluginID="QueryIT" modelName="QueryIT"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    copyrightFields="false" importOrganizing="true">
+  <foreignModel>queryIT.ecore</foreignModel>
+  <genPackages prefix="QueryIT" disposableProviderFactory="true" ecorePackage="queryIT.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="queryIT.ecore#//PageType">
+      <genEnumLiterals ecoreEnumLiteral="queryIT.ecore#//PageType/regular"/>
+      <genEnumLiterals ecoreEnumLiteral="queryIT.ecore#//PageType/intro"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="queryIT.ecore#//QuestionType">
+      <genEnumLiterals ecoreEnumLiteral="queryIT.ecore#//QuestionType/textBox"/>
+      <genEnumLiterals ecoreEnumLiteral="queryIT.ecore#//QuestionType/textField"/>
+      <genEnumLiterals ecoreEnumLiteral="queryIT.ecore#//QuestionType/multipleChoice_radioBtn"/>
+      <genEnumLiterals ecoreEnumLiteral="queryIT.ecore#//QuestionType/multipleChoice_checkBox"/>
+      <genEnumLiterals ecoreEnumLiteral="queryIT.ecore#//QuestionType/multipleChoice_grid"/>
+      <genEnumLiterals ecoreEnumLiteral="queryIT.ecore#//QuestionType/dropdownMenu"/>
+      <genEnumLiterals ecoreEnumLiteral="queryIT.ecore#//QuestionType/slider"/>
+      <genEnumLiterals ecoreEnumLiteral="queryIT.ecore#//QuestionType/ranking"/>
+      <genEnumLiterals ecoreEnumLiteral="queryIT.ecore#//QuestionType/dateTime"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="queryIT.ecore#//AnswerType">
+      <genEnumLiterals ecoreEnumLiteral="queryIT.ecore#//AnswerType/regular"/>
+      <genEnumLiterals ecoreEnumLiteral="queryIT.ecore#//AnswerType/otherSimple"/>
+      <genEnumLiterals ecoreEnumLiteral="queryIT.ecore#//AnswerType/otherWithTextbox"/>
+    </genEnums>
+    <genClasses ecoreClass="queryIT.ecore#//Survey">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute queryIT.ecore#//Survey/showPageNum"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute queryIT.ecore#//Survey/author"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute queryIT.ecore#//Survey/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute queryIT.ecore#//Survey/showMaxPoints"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference queryIT.ecore#//Survey/pages"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute queryIT.ecore#//Survey/timeLimit"/>
+    </genClasses>
+    <genClasses ecoreClass="queryIT.ecore#//Question">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute queryIT.ecore#//Question/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute queryIT.ecore#//Question/text"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute queryIT.ecore#//Question/mandatory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute queryIT.ecore#//Question/contentUri"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute queryIT.ecore#//Question/timeLimit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference queryIT.ecore#//Question/possibleAnswers"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute queryIT.ecore#//Question/rangeStart"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute queryIT.ecore#//Question/rangeEnd"/>
+    </genClasses>
+    <genClasses ecoreClass="queryIT.ecore#//PossibleAnswer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute queryIT.ecore#//PossibleAnswer/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute queryIT.ecore#//PossibleAnswer/isDefault"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute queryIT.ecore#//PossibleAnswer/text"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute queryIT.ecore#//PossibleAnswer/points"/>
+    </genClasses>
+    <genClasses ecoreClass="queryIT.ecore#//Page">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute queryIT.ecore#//Page/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute queryIT.ecore#//Page/text"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference queryIT.ecore#//Page/questions"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

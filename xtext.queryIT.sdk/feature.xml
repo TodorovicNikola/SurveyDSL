@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature id="xtext.queryIT.sdk"
+	label="QueryIT SDK Feature "
+	version="1.0.0.qualifier">
+	<plugin
+			id="xtext.queryIT"
+			download-size="0"
+			install-size="0"
+			version="0.0.0"
+			unpack="false"/>
+	<plugin
+			id="xtext.queryIT.ui"
+			download-size="0"
+			install-size="0"
+			version="0.0.0"
+			unpack="false"/>
+</feature>

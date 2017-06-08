@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="queryIT" nsURI="http://www.example.org/queryIT" nsPrefix="queryIT">
+  <eAnnotations source="http://www.eclipse.org/OCL/Import">
+    <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore#/"/>
+  </eAnnotations>
+  <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+    <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="Survey">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="timeLimitNotNegativeS"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="timeLimitNotNegativeS" value="&#xA;&#x9;&#x9;&#x9;timeLimit >= 0"/>
+      <details key="timeLimitNotNegativeS$message" value="'Time Limit cannot be negative!'"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="author" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pages" lowerBound="1" upperBound="-1"
+        eType="#//Page" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timeLimit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="completedMessage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pageNextText" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pagePrevText" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="completeText" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="questionTitleLocation"
+        eType="#//TitleLocation"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hideNavigationButtons"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hidePageTitles" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="showProgressBar" eType="#//ProgressBarLocation"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hideQuestionNumbers" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hidePageNumbers" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="QuestionType">
+    <eLiterals name="text"/>
+    <eLiterals name="radiogroup" value="1"/>
+    <eLiterals name="checkbox" value="2"/>
+    <eLiterals name="dropdown" value="3"/>
+    <eLiterals name="comment" value="4"/>
+    <eLiterals name="matrix" value="5"/>
+    <eLiterals name="multipleText" value="8"/>
+    <eLiterals name="rating" value="10"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Question">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="rangeInvalid matrixHasRowsAndCols multipleTextHasItems choicesUseless choicesNeeded inputType"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="rangeInvalid" value="&#xA;&#x9;&#x9;&#x9;if(type = QuestionType::text and inputType = TextInputType::range) then&#xA;&#x9;&#x9;&#x9;&#x9;rangeStart &lt;> rangeEnd&#xA;&#x9;&#x9;&#x9;else&#xA;&#x9;&#x9;&#x9;&#x9;true&#xA;&#x9;&#x9;&#x9;endif"/>
+      <details key="rangeInvalid$message" value="'Range Start and Range End cannot be equal.'"/>
+      <details key="matrixHasRowsAndCols" value="&#xA;&#x9;&#x9;&#x9;if(type = QuestionType::matrix) then&#xA;&#x9;&#x9;&#x9;&#x9;matrixRows->size() > 0 and matrixColumns->size() > 0&#xA;&#x9;&#x9;&#x9;else&#xA;&#x9;&#x9;&#x9;&#x9;true&#xA;&#x9;&#x9;&#x9;endif"/>
+      <details key="matrixHasRowsAndCols$message" value="'matrixRows and matrixColumns must be declared for the Question of type \'Matrix\''"/>
+      <details key="multipleTextHasItems" value="&#xA;&#x9;&#x9;&#x9;if(type = QuestionType::multipleText) then&#xA;&#x9;&#x9;&#x9;&#x9;multiTextItems->size() > 0&#xA;&#x9;&#x9;&#x9;else&#xA;&#x9;&#x9;&#x9;&#x9;true&#xA;&#x9;&#x9;&#x9;endif"/>
+      <details key="multipleTextHasItems$message" value="'Question of type \'MultipleText\' must have atleast one multiTextItem declared'"/>
+      <details key="choicesUseless" value="&#xA;&#x9;&#x9;&#x9;if(type &lt;> QuestionType::radiogroup and type &lt;> QuestionType::dropdown and type &lt;> QuestionType::checkbox) then&#xA;&#x9;&#x9;&#x9;&#x9;choices-> isEmpty() = true&#xA;&#x9;&#x9;&#x9;else&#xA;&#x9;&#x9;&#x9;&#x9;true&#xA;&#x9;&#x9;&#x9;endif"/>
+      <details key="choicesUseless$message" value="'Choices are useless for the seleced type of Question'"/>
+      <details key="choicesNeeded" value="&#xA;&#x9;&#x9;&#x9;if(type = QuestionType::radiogroup or type = QuestionType::dropdown or type = QuestionType::checkbox) then&#xA;&#x9;&#x9;&#x9;&#x9;choices-> isEmpty() = false&#xA;&#x9;&#x9;&#x9;else&#xA;&#x9;&#x9;&#x9;&#x9;true&#xA;&#x9;&#x9;&#x9;endif"/>
+      <details key="choicesNeeded$message" value="'Choices are needed for the seleced type of Question'"/>
+      <details key="inputType" value="&#xA;&#x9;&#x9;&#x9;if(type &lt;> QuestionType::text) then&#xA;&#x9;&#x9;&#x9;&#x9;inputType = TextInputType::text&#xA;&#x9;&#x9;&#x9;else&#xA;&#x9;&#x9;&#x9;&#x9;true&#xA;&#x9;&#x9;&#x9;endif"/>
+      <details key="inputType$message" value="'InputType is used only for questions of type \'Text\''"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1" eType="#//QuestionType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isRequired" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rangeStart" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rangeEnd" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="inputType" eType="#//TextInputType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="visibleIf" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="placeholder" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="choices" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="colCount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="matrixRows" upperBound="-1"
+        eType="#//TextValue" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="multiTextItems" upperBound="-1"
+        eType="#//MultiTextItem" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="questionName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rows" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mininumRateDescription"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maximumRateDescription"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="matrixColumns" upperBound="-1"
+        eType="#//TextValue" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Page">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="questions" lowerBound="1"
+        upperBound="-1" eType="#//Question" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="visibleIf" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="TitleLocation">
+    <eLiterals name="top"/>
+    <eLiterals name="bottom" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ProgressBarLocation">
+    <eLiterals name="top"/>
+    <eLiterals name="off" value="1"/>
+    <eLiterals name="bottom" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="TextInputType">
+    <eLiterals name="text"/>
+    <eLiterals name="time" value="1"/>
+    <eLiterals name="range" value="2"/>
+    <eLiterals name="color" value="3"/>
+    <eLiterals name="date" value="4"/>
+    <eLiterals name="datetime" value="5"/>
+    <eLiterals name="email" value="7"/>
+    <eLiterals name="month" value="8"/>
+    <eLiterals name="number" value="9"/>
+    <eLiterals name="password" value="10"/>
+    <eLiterals name="tel" value="11"/>
+    <eLiterals name="url" value="12"/>
+    <eLiterals name="week" value="13"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TextValue">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MultiTextItem">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="On_off">
+    <eLiterals name="on"/>
+    <eLiterals name="off" value="1"/>
+  </eClassifiers>
+</ecore:EPackage>
