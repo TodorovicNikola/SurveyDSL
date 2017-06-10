@@ -14,6 +14,6 @@ SurveyDSL is a domain specific language (DSL) for specifying survey structures u
  7. Run the QueryITToXMI.java file as Java Application and the generated .js and .html files should be placed in the folder specified in the PATH_TO_REPO_DESTINATION variable.
  
  # Legal notice
- All product names, trademarks and registered trademarks are property of their respective owners. All company, product and service names used in this website are for identification purposes only. Use of these names, trademarks and brands does not imply endorsement.
+ All product names, trademarks and registered trademarks are property of their respective owners. All company, product and service names used in this project are for identification purposes only. Use of these names, trademarks and brands does not imply endorsement.
  
  Special thanks to the development team of the Survey.js library (http://surveyjs.org/)
