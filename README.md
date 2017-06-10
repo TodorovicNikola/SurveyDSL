@@ -18,8 +18,11 @@ SurveyDSL is a domain specific language (DSL) designed for specifying survey str
  
  # Technologies and Legal Notice
 [Eclipse Modeling Framework (EMF)](https://eclipse.org/modeling/emf/)
+
 [Xtext - Language Engineering For Everyone](https://eclipse.org/Xtext/)
+
 [Xtend - Modernized Java](http://www.eclipse.org/xtend/)
+
 [Survey.js - The JavaScript JSON based Survey Library](http://surveyjs.org/)
  
  All product names, trademarks and registered trademarks are property of their respective owners. All company, product and service names used in this project are for identification purposes only. Use of these names, trademarks and brands does not imply endorsement. 
