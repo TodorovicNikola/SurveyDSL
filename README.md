@@ -14,7 +14,8 @@ SurveyDSL is a domain specific language (DSL) designed for specifying survey str
   a) PATH_TO_REPO_SOURCE,
   b) PATH_TO_REPO_DESTINATION and
   c) QIT_NAME;
- 7. Run the QueryITToXMI.java file as Java Application and the generated .js and .html files should be placed in the folder specified in the PATH_TO_REPO_DESTINATION variable.
+ 7. Run the QueryITToXMI.java file as Java Application and the generated .js and .html files should be placed in the folder specified in the PATH_TO_REPO_DESTINATION variable,
+ 8. Add the resource folder located in the QueryIT.generator/generatedFiles to the destination folder.
  
  # Language Specification
  To se the full specification of the SurveyDSL language, please refer to the SurveyDSL.pdf document (located in the root folder of the current repository)
