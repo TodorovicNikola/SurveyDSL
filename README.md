@@ -16,13 +16,19 @@ SurveyDSL is a domain specific language (DSL) designed for specifying survey str
   c) QIT_NAME;
  7. Run the QueryITToXMI.java file as Java Application and the generated .js and .html files should be placed in the folder specified in the PATH_TO_REPO_DESTINATION variable.
  
+ # Language Specification
+ To se the full specification of the SurveyDSL language, please refer to the SurveyDSL.pdf document (located in the root folder of the current repository)
+ 
  # Technologies and Legal Notice
 [Eclipse Modeling Framework (EMF)](https://eclipse.org/modeling/emf/)
+
 [Xtext - Language Engineering For Everyone](https://eclipse.org/Xtext/)
+
 [Xtend - Modernized Java](http://www.eclipse.org/xtend/)
+
 [Survey.js - The JavaScript JSON based Survey Library](http://surveyjs.org/)
  
- All product names, trademarks and registered trademarks are property of their respective owners. All company, product and service names used in this project are for identification purposes only. Use of these names, trademarks and brands does not imply endorsement.
+ All product names, trademarks and registered trademarks are property of their respective owners. All company, product and service names used in this project are for identification purposes only. Use of these names, trademarks and brands does not imply endorsement. 
  
  Special thanks to the development team of the Survey.js library (http://surveyjs.org/)
  
